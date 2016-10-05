@@ -1,5 +1,5 @@
 //config.json
   "_googleAnalytics": {
       "_isEnabled": true,
-      "_identifier": "your code here"
+      "_identifier": "your Google Analytics code here"
   }
