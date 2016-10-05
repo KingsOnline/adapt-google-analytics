@@ -1,4 +1,4 @@
-# Adapt-Intro
+# Adapt-google-analytics
 
 
 ![alt tag](http://g.recordit.co/x2E4OcTSKp.gif)
