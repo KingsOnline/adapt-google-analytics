@@ -1,0 +1,20 @@
+{
+    "name": "adapt-intro",
+    "repository": "git://github.com/KingsOnline/adapt-intro",
+    "framework": "^2.0.0",
+    "version": "1.0.0",
+    "displayName": "Intro",
+    "extension": "Intro",
+    "description": "An extension to guide learners through the elements of an Adapt page.",
+    "main": "/js/adapt-intro.js",
+    "keywords": [
+        "adapt-plugin",
+        "adapt-extension"
+    ],
+    "authors": [
+        "Simon Date"
+    ],
+    "license": "GPL-3.0",
+    "homepage": "https://github.com/KingsOnline/adapt-intro",
+    "targetAttribute": "_intro"
+}

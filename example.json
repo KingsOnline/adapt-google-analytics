@@ -1,0 +1,14 @@
+//course.json
+"_introJs": {
+  "_isEnabled": true,
+  "_steps": [
+    {
+      "_element": "page-level-progress-navigation",
+      "text": "This is the Page Level Progress bar"
+    },
+    {
+      "_element": "b-05",
+      "text": "This is your content.<br><br><strong>Scroll down the page to begin</strong>"
+    }
+  ]
+}

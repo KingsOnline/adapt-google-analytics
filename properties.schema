@@ -1,0 +1,77 @@
+{
+  "type": "object",
+  "$schema": "http://json-schema.org/draft-04/schema",
+  "id": "http://jsonschema.net",
+  "required": false,
+    "globals": {
+  },
+  "properties": {
+    "pluginLocations": {
+      "type": "object",
+      "required":true,
+      "properties": {
+        "config": {
+          "type": "object"
+        },
+        "contentobject": {
+          "type": "object"
+        },
+        "article": {
+          "type": "object"
+        },
+        "block": {
+          "type": "object"
+        },
+        "component": {
+          "type": "object"
+        },
+        "course": {
+          "type": "object",
+          "properties": {
+            "_intro": {
+              "type": "object",
+              "required": false,
+              "legend": "IntroJs",
+              "properties": {
+                "_isEnabled": {
+                  "type": "boolean",
+                  "default": true,
+                  "title": "Enable Intro",
+                  "inputType": "Checkbox",
+                  "help": "Enable IntroJs globally"
+                },
+                "_steps": {
+                  "type": "array",
+                  "required": false,
+                  "title": "Introduction steps",
+                  "items": {
+                    "type": "object",
+                    "required": false,
+                    "title": "Items",
+                    "properties": {
+                      "_element": {
+                        "type": "string",
+                        "require": false,
+                        "title": "Element",
+                        "inputType": "Text",
+                        "validators": []
+                      },
+                      "text": {
+                        "type": "string",
+                        "require": false,
+                        "title": "Text that should display here",
+                        "inputType": "Text",
+                        "validators": [],
+                        "translatable": true
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}
