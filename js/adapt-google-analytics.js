@@ -6,7 +6,7 @@ define(function(require) {
     // This should add/update progress on menuView
 
 	Adapt.on("pageView:ready", function() {
-		var gaIdentifier = Adapt.config.attributes._googleAnalytics;
+		var gaIdentifier = Adapt.config.attributes._googleAnalytics._identifier;
 
         // Create the element
         var GaTag = document.createElement("script");
