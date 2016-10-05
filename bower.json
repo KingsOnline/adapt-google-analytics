@@ -3,9 +3,9 @@
     "repository": "git://github.com/KingsOnline/adapt-google-analytics",
     "framework": "^2.0.0",
     "version": "1.0.0",
-    "displayName": "Intro",
-    "extension": "Intro",
-    "description": "An extension to guide learners through the elements of an Adapt page.",
+    "displayName": "Google Analytics",
+    "extension": "Google Analytics",
+    "description": "Google Analytics within Adapt.",
     "main": "/js/adapt-google-analytics.js",
     "keywords": [
         "adapt-plugin",
@@ -16,5 +16,5 @@
     ],
     "license": "GPL-3.0",
     "homepage": "https://github.com/KingsOnline/adapt-google-analytics",
-    "targetAttribute": "_google-analytics"
+    "targetAttribute": "_googleAnalytics"
 }

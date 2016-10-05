@@ -3,15 +3,37 @@
   "$schema": "http://json-schema.org/draft-04/schema",
   "id": "http://jsonschema.net",
   "required": false,
-    "globals": {
-  },
+  "globals": {},
   "properties": {
     "pluginLocations": {
       "type": "object",
-      "required":true,
+      "required": true,
       "properties": {
         "config": {
-          "type": "object"
+          "type": "object",
+          "properties": {
+            "_googleAnalytics": {
+              "type": "object",
+              "required": false,
+              "legend": "Google Analytics",
+              "properties": {
+                "_isEnabled": {
+                  "type": "boolean",
+                  "default": true,
+                  "title": "Enable Google Analytics",
+                  "inputType": "Checkbox",
+                  "help": "Turn off and republish to stop tracking a course"
+                },
+                "_identifier": {
+                  "type": "string",
+                  "require": true,
+                  "title": "Identifer code",
+                  "inputType": "Text",
+                  "help": "You can find this on the Google Analytics website"
+                }
+              }
+            }
+          }
         },
         "contentobject": {
           "type": "object"
@@ -26,50 +48,7 @@
           "type": "object"
         },
         "course": {
-          "type": "object",
-          "properties": {
-            "_intro": {
-              "type": "object",
-              "required": false,
-              "legend": "IntroJs",
-              "properties": {
-                "_isEnabled": {
-                  "type": "boolean",
-                  "default": true,
-                  "title": "Enable Intro",
-                  "inputType": "Checkbox",
-                  "help": "Enable IntroJs globally"
-                },
-                "_steps": {
-                  "type": "array",
-                  "required": false,
-                  "title": "Introduction steps",
-                  "items": {
-                    "type": "object",
-                    "required": false,
-                    "title": "Items",
-                    "properties": {
-                      "_element": {
-                        "type": "string",
-                        "require": false,
-                        "title": "Element",
-                        "inputType": "Text",
-                        "validators": []
-                      },
-                      "text": {
-                        "type": "string",
-                        "require": false,
-                        "title": "Text that should display here",
-                        "inputType": "Text",
-                        "validators": [],
-                        "translatable": true
-                      }
-                    }
-                  }
-                }
-              }
-            }
-          }
+          "type": "object"
         }
       }
     }
