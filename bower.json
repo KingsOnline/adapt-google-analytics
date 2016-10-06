@@ -2,7 +2,7 @@
     "name": "adapt-google-analytics",
     "repository": "git://github.com/KingsOnline/adapt-google-analytics",
     "framework": "^2.0.0",
-    "version": "1.0.2",
+    "version": "1.0.3",
     "displayName": "Google Analytics",
     "extension": "Google Analytics",
     "description": "Extension that allows Google Analytics to be easily added into an Adapt course.",
