@@ -2,8 +2,6 @@ define(function(require) {
 
     var Adapt = require('coreJS/adapt');
 
-    console.log(getUrl());
-
 	Adapt.on("app:dataReady", function() {
 		var gaIdentifier = Adapt.config.attributes._googleAnalytics._identifier;
         var GaTag = document.createElement("script");
