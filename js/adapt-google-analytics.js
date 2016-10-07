@@ -1,6 +1,6 @@
-define(function(require) {
-
-    var Adapt = require('coreJS/adapt');
+define([
+    'core/js/adapt'
+], function(Adapt) {
 
 	Adapt.on("app:dataReady", function() {
 		var gaIdentifier = Adapt.config.attributes._googleAnalytics._identifier;
@@ -15,13 +15,12 @@ define(function(require) {
 		ga('send', 'pageview');
     });
 
-
 	Adapt.on("menuView:ready", function() {
         ga('set', 'page', getUrl());
 		ga('send', 'pageview');
     });
-});
 
-function getUrl() {
-	return location.pathname + location.hash;
-}
+    function getUrl() {
+        return location.pathname + location.hash;
+    }
+});
