@@ -8,10 +8,10 @@ For the Authoring Tool download the zip to your computer and then upload the .zi
 
 ## Settings
 
-Inside the ```Configuration settings``` find ```Google Analytics``` and ensure it is enabled. Paste in your tracking code Google Analytics.
+Inside the Configuration settings find Google Analytics and ensure it is enabled. Paste in your tracking code Google Analytics.
 
 Google Analytics will track users on every page within the Adapt course. It has been tested to support tracking the users location, browser and device.
 
 ## New features / bugs
 
-Please use the ```Issues``` feature of Github to request features or report bugs!
+Please use the Issues feature of Github to request features or report bugs!
