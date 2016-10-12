@@ -2,7 +2,7 @@
 
 An extension that enables you to easily implement Google Analytics into an Adapt course. Framework and AT compliant.
 
-## Installiation
+## Installation
 
 For the Authoring Tool download the zip to your computer and then upload the .zip through the plugin manager. For the Framework either run ```adapt install adapt-google-analytics``` if you have Adapt CLI installed or unzip the folder in your extension directory.
 
