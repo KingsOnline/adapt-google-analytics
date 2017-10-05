@@ -1,5 +1,17 @@
 //config.json
   "_googleAnalytics": {
       "_isEnabled": true,
-      "_identifier": "your Google Analytics code here"
+      "_identifier": "your Google Analytics code here",
+      "_interactions": {
+        "_printPage": {
+          "_navigation": true,
+          "_bottomPage": false
+        },
+        "_brightcove": {
+          "_transcriptOpened": true,
+          "_transcriptDownloaded": true
+        },
+        "_contents": true,
+        "_search": true
+      }
   }

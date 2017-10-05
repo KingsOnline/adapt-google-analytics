@@ -16,19 +16,37 @@ define(['core/js/adapt'], function(Adapt) {
     ga('set', 'page', getUrl());
     ga('send', 'pageview');
     console.log('working');
-    printPageListener();
+
+    var interactions = Adapt.config.get('_googleAnalytics')._interactions;
+    setupPrintPage(interactions._printPage);
+    setupBrightcove(interactions._brightcove);
+    setupContents(interactions._contents);
+    setupSearch(interactions._search);
   });
 
-  function printPageListener() {
-    if(Adapt.config.get('_googleAnalytics')._interactions._printPage) {
-
-      $('body').on('click', '.printPage-icon', function() {
-          console.log('print page fired');
-          ga('send', 'event', 'Button', 'Click', 'Print page');
-      });
-
-    }
+  function setupPrintPage(printPage) {
+    if(!printPage) return;
+      if(printPage._navigation) {
+        $('body').on('click', '.printPage-icon', function() {
+            console.log('print page fired');
+            ga('send', 'event', 'Button', 'Click', 'Print page');
+        });
+      }
   }
+
+  function setupBrightcove(brightcove) {
+    if(!brightcove) return;
+  }
+
+  function setupContents(contents) {
+    if(!contents) return;
+  }
+
+  function setupSearch(search) {
+    if(!search) return;
+  }
+
+
 
   function getUrl() {
     return location.pathname + location.hash;
