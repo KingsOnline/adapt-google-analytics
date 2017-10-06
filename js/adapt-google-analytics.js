@@ -16,7 +16,7 @@ define(['core/js/adapt'], function(Adapt) {
     ga('set', 'page', getUrl());
     ga('send', 'pageview');
     var interactions = Adapt.config.get('_googleAnalytics')._interactions;
-    console.log(interactions);
+    if(!interactions) return;
     setupPrintPage(interactions._printPage);
     setupBrightcove(interactions._brightcove);
     setupContents(interactions._contents);
