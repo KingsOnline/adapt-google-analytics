@@ -50,7 +50,7 @@
                         "_bottomPage": {
                           "type": "boolean",
                           "default": true,
-                          "title": "Track print page as bottom of the page prompt.",
+                          "title": "Track print page as bottom of the page prompt",
                           "inputType": "Checkbox"
                         }
                       }
@@ -63,13 +63,13 @@
                         "_transcriptOpened": {
                           "type": "boolean",
                           "default": true,
-                          "title": "Track transcript being opened on the page.",
+                          "title": "Track transcript being opened on the page",
                           "inputType": "Checkbox"
                         },
                         "_transcriptDownloaded": {
                           "type": "boolean",
                           "default": true,
-                          "title": "Track transcript being opened as a PDF.",
+                          "title": "Track transcript being opened as a PDF",
                           "inputType": "Checkbox"
                         }
                       }
@@ -82,19 +82,19 @@
                         "_pageComplete": {
                           "type": "boolean",
                           "default": true,
-                          "title": "Tracks when the current page has been completed.",
+                          "title": "Tracks when the current page has been completed",
                           "inputType": "Checkbox"
                         },
                         "_articleClicked": {
                           "type": "boolean",
                           "default": true,
-                          "title": "Tracks an Article title being clicked in the Contents.",
+                          "title": "Tracks an Article title being clicked in the Contents",
                           "inputType": "Checkbox"
                         },
                         "_componentClicked": {
                           "type": "boolean",
                           "default": true,
-                          "title": "Tracks an Component title being clicked in the Contents.",
+                          "title": "Tracks an Component title being clicked in the Contents",
                           "inputType": "Checkbox"
                         }
                       }
@@ -107,7 +107,7 @@
                         "_iconClicked": {
                           "type": "boolean",
                           "default": true,
-                          "title": "Track the pressing of the search icon.",
+                          "title": "Track the pressing of the search icon",
                           "inputType": "Checkbox"
                         }
                       }
