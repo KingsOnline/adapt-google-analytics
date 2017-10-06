@@ -30,6 +30,89 @@
                   "title": "Identifer code",
                   "inputType": "Text",
                   "help": "You can find this on the Google Analytics website"
+                },
+                "_interactions": {
+                  "type": "object",
+                  "required": false,
+                  "legend": "Trackable interactions",
+                  "properties": {
+                    "_printPage": {
+                      "type": "object",
+                      "required": false,
+                      "legend": "Print page extension",
+                      "properties": {
+                        "_navigation": {
+                          "type": "boolean",
+                          "default": true,
+                          "title": "Track print page navigation icon",
+                          "inputType": "Checkbox"
+                        },
+                        "_bottomPage": {
+                          "type": "boolean",
+                          "default": true,
+                          "title": "Track print page as bottom of the page prompt.",
+                          "inputType": "Checkbox"
+                        }
+                      }
+                    },
+                    "_brightcove": {
+                      "type": "object",
+                      "required": false,
+                      "legend": "Brightcove component",
+                      "properties": {
+                        "_transcriptOpened": {
+                          "type": "boolean",
+                          "default": true,
+                          "title": "Track transcript being opened on the page.",
+                          "inputType": "Checkbox"
+                        },
+                        "_transcriptDownloaded": {
+                          "type": "boolean",
+                          "default": true,
+                          "title": "Track transcript being opened as a PDF.",
+                          "inputType": "Checkbox"
+                        }
+                      }
+                    },
+                    "_contents": {
+                      "type": "object",
+                      "required": false,
+                      "legend": "Contents extension",
+                      "properties": {
+                        "_pageComplete": {
+                          "type": "boolean",
+                          "default": true,
+                          "title": "Tracks when the current page has been completed.",
+                          "inputType": "Checkbox"
+                        },
+                        "_articleClicked": {
+                          "type": "boolean",
+                          "default": true,
+                          "title": "Tracks an Article title being clicked in the Contents.",
+                          "inputType": "Checkbox"
+                        },
+                        "_componentClicked": {
+                          "type": "boolean",
+                          "default": true,
+                          "title": "Tracks an Component title being clicked in the Contents.",
+                          "inputType": "Checkbox"
+                        }
+                      }
+                    },
+                    "_search": {
+                      "type": "object",
+                      "required": false,
+                      "legend": "Contents extension",
+                      "properties": {
+                        "_iconClicked": {
+                          "type": "boolean",
+                          "default": true,
+                          "title": "Track the pressing of the search icon.",
+                          "inputType": "Checkbox"
+                        }
+                      }
+                    }
+                  }
                 }
               }
             }
