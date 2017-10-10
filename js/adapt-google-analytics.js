@@ -15,12 +15,10 @@ define(['core/js/adapt'], function(Adapt) {
       return;
     ga('set', 'page', getUrl());
     ga('send', 'pageview');
-    var interactions = Adapt.config.get('_googleAnalytics')._interactions;
-    if (!interactions) return;
-    setupPrintPage(interactions._printPage);
-    setupBrightcove(interactions._brightcove);
-    setupContents(interactions._contents);
-    setupSearch(interactions._search);
+    setupPrintPage();
+    setupBrightcove();
+    setupContents();
+    setupSearch();
   });
 
   Adapt.on("pageView:ready menuView:ready", function() {
@@ -30,75 +28,55 @@ define(['core/js/adapt'], function(Adapt) {
     ga('set', 'page', '/' + location.hash);
   });
 
-  function setupPrintPage(printPage) {
-    if (!printPage) return;
-    if (printPage._navigation) {
-      $('body').on('click', '.printPage-icon', function() {
-        event.preventDefault();
-        Adapt.log.debug('print page fired');
-        ga('send', 'event', 'printPage', 'navigation', Adapt.course.get('title'));
-      });
-    }
-    if (printPage._bottomPage) {
-      $('body').on('click', '.printPage-icon', function() {
-        event.preventDefault();
-        Adapt.log.debug('print page fired');
-        ga('send', 'event', 'printPage', 'navigation', Adapt.course.get('title'));
-      });
-    }
+  function setupPrintPage() {
+    $('body').on('click', '.printPage-icon', function() {
+      event.preventDefault();
+      Adapt.log.debug('print page fired');
+      ga('send', 'event', 'printPage', 'navigation', Adapt.course.get('title'));
+    });
+    $('body').on('click', '.printPage-icon', function() {
+      event.preventDefault();
+      Adapt.log.debug('print page fired');
+      ga('send', 'event', 'printPage', 'navigation', Adapt.course.get('title'));
+    });
   }
 
-  function setupBrightcove(brightcove) {
-    if (!brightcove) return;
-    if (brightcove._transcriptOpened) {
-      $('body').on('click', '.media-inline-transcript-button', function() {
-        event.preventDefault();
-        var componentID = $(this).closest('.component').attr('data-adapt-id');
-        ga('send', 'event', 'Brightcove-transcript-opened', getBCIDfromComponentID(componentID), Adapt.course.get('title'));
-      });
-    }
-    if (brightcove._transcriptDownloaded) {
-      $('body').on('click', '.media-external-transcript-button', function(componentId) {
-        event.preventDefault();
-        var componentID = $(this).closest('.component').attr('data-adapt-id');
-        ga('send', 'event', 'Brightcove-transcript-downloaded', getBCIDfromComponentID(componentID), Adapt.course.get('title'));
-      });
-    }
+  function setupBrightcove() {
+    $('body').on('click', '.media-inline-transcript-button', function() {
+      event.preventDefault();
+      var componentID = $(this).closest('.component').attr('data-adapt-id');
+      ga('send', 'event', 'Brightcove-transcript-opened', getBCIDfromComponentID(componentID), Adapt.course.get('title'));
+    });
+    $('body').on('click', '.media-external-transcript-button', function(componentId) {
+      event.preventDefault();
+      var componentID = $(this).closest('.component').attr('data-adapt-id');
+      ga('send', 'event', 'Brightcove-transcript-downloaded', getBCIDfromComponentID(componentID), Adapt.course.get('title'));
+    });
   }
 
   function getBCIDfromComponentID(componentID) {
     return Adapt.findById(componentID).get('_videoId');
   }
 
-  function setupContents(contents) {
-    if (!contents) return;
-    if (contents._pageComplete) { // needs to be setup every page
-      Adapt.on("contents:pageComplete", function() {
-        ga('send', 'event', 'Contents', 'page-complete', '/' + location.hash);
-      });
-    }
-    if (contents._articleClicked) {
-      $('body').on('click', '.contents-article-title', function() {
-        Adapt.log.debug('Article clicked');
-        ga('send', 'event', 'Contents', 'article-clicked', Adapt.course.get('title'));
-      });
-    }
-    if (contents._componentClicked) {
-      $('body').on('click', '.contents-component-title', function() {
-        Adapt.log.debug('component clicked');
-        ga('send', 'event', 'Contents', 'component-clicked', Adapt.course.get('title'));
-      });
-    }
+  function setupContents() {
+    Adapt.on("contents:pageComplete", function() {
+      ga('send', 'event', 'Contents', 'page-complete', '/' + location.hash);
+    });
+    $('body').on('click', '.contents-article-title', function() {
+      Adapt.log.debug('Article clicked');
+      ga('send', 'event', 'Contents', 'article-clicked', Adapt.course.get('title'));
+    });
+    $('body').on('click', '.contents-component-title', function() {
+      Adapt.log.debug('component clicked');
+      ga('send', 'event', 'Contents', 'component-clicked', Adapt.course.get('title'));
+    });
   }
 
   function setupSearch(search) {
-    if (!search) return;
-    if (search._iconClicked) {
-      $('body').on('click', '.icon-search', function() {
-        Adapt.log.debug('Searching');
-        ga('send', 'event', 'Search', 'icon-clicked', Adapt.course.get('title'));
-      });
-    }
+    $('body').on('click', '.icon-search', function() {
+      Adapt.log.debug('Searching');
+      ga('send', 'event', 'Search', 'icon-clicked', Adapt.course.get('title'));
+    });
   }
 
   function getUrl() {
