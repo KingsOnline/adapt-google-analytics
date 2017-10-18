@@ -60,7 +60,7 @@ define(['core/js/adapt'], function(Adapt) {
 
   function setupContents() {
     Adapt.on("contents:pageComplete", function() {
-      ga('send', 'event', 'Contents', 'page-complete', '/' + location.hash);
+      ga('send', 'event', 'Contents', 'page-complete', '/' + Adapt.contentObjects._byAdaptID[Adapt.location._currentId][0].get('title'));
     });
     $('body').on('click', '.contents-article-title', function() {
       Adapt.log.debug('Article clicked');
