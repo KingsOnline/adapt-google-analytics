@@ -19,6 +19,7 @@ define(['core/js/adapt'], function(Adapt) {
     setupBrightcove();
     setupContents();
     setupSearch();
+    setupGoTop();
   });
 
   Adapt.on("pageView:ready menuView:ready", function() {
@@ -70,6 +71,13 @@ define(['core/js/adapt'], function(Adapt) {
       Adapt.log.debug('component clicked');
       ga('send', 'event', 'Contents', 'component-clicked', Adapt.course.get('title'));
     });
+  }
+
+  function setupGoTop() {
+      $('body').on('click', '.goTop-button', function() {
+        Adapt.log.debug('Go top');
+        ga('send', 'event', 'GoTop', 'icon-clicked', Adapt.course.get('title'));
+      });
   }
 
   function setupSearch(search) {
