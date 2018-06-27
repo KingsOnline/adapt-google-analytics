@@ -1,6 +1,6 @@
 define(['core/js/adapt'], function(Adapt) {
 
-  Adapt.on("app:dataReady", function() {
+  Adapt.on("adapt:start", function() {
     if (!Adapt.config.get('_googleAnalytics') || !Adapt.config.get('_googleAnalytics')._isEnabled)
       return;
     var gaIdentifier = Adapt.config.get('_googleAnalytics')._identifier;
