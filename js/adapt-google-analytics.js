@@ -21,6 +21,7 @@ define(['core/js/adapt'], function(Adapt) {
         googleAnalytics.setupSearch();
         googleAnalytics.setupGoTop();
         googleAnalytics.setupSocial();
+        googleAnalytics.setupClose();
     });
 
     Adapt.on("pageView:ready menuView:ready", function() {
@@ -58,15 +59,25 @@ define(['core/js/adapt'], function(Adapt) {
             });
         },
 
+        setupClose() {
+            $('body').on('click', '.navigation-close-button', function(componentId) {
+                event.preventDefault();
+                Adapt.log.debug('Course closed');
+                ga('send', 'event', 'course-exited', 'exit-icon-clicked', Adapt.course.get('title'));
+            });
+        },
+
         setupContents() {
             Adapt.on("contents:pageComplete", function() {
                 ga('send', 'event', 'Contents', 'page-complete', '/' + Adapt.contentObjects._byAdaptID[Adapt.location._currentId][0].get('title'));
             });
             $('body').on('click', '.contents-article-title', function() {
+                event.preventDefault();
                 Adapt.log.debug('Article clicked');
                 ga('send', 'event', 'Contents', 'article-clicked', Adapt.course.get('title'));
             });
             $('body').on('click', '.contents-component-title', function() {
+                event.preventDefault();
                 Adapt.log.debug('component clicked');
                 ga('send', 'event', 'Contents', 'component-clicked', Adapt.course.get('title'));
             });
@@ -74,6 +85,7 @@ define(['core/js/adapt'], function(Adapt) {
 
         setupGoTop() {
             $('body').on('click', '.goTop-button', function() {
+                event.preventDefault();
                 Adapt.log.debug('Go top');
                 ga('send', 'event', 'GoTop', 'icon-clicked', Adapt.course.get('title'));
             });
@@ -81,6 +93,7 @@ define(['core/js/adapt'], function(Adapt) {
 
         setupSearch(search) {
             $('body').on('click', '.icon-search', function() {
+                event.preventDefault();
                 Adapt.log.debug('Searching');
                 ga('send', 'event', 'Search', 'icon-clicked', Adapt.course.get('title'));
             });
@@ -88,6 +101,7 @@ define(['core/js/adapt'], function(Adapt) {
 
         setupSocial() {
             $('body').on('click', '.social-open-button', function() {
+                event.preventDefault();
                 Adapt.log.debug('Social');
                 ga('send', 'event', 'Social', 'social-opened', Adapt.course.get('title'));
             });
@@ -95,10 +109,12 @@ define(['core/js/adapt'], function(Adapt) {
 
         setupQuickNav() {
             $( ".quicknav #previous" ).on( "click", function() {
+                event.preventDefault();
                 Adapt.log.debug('Quicknav back');
                 ga('send', 'event', 'Quicknav', 'previous', Adapt.course.get('title'));
             });
             $( ".quicknav #next" ).on( "click", function() {
+                event.preventDefault();
                 Adapt.log.debug('Quicknav next');
                 ga('send', 'event', 'Quicknav', 'next', Adapt.course.get('title'));
             });
