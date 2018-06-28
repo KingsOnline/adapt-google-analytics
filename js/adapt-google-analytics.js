@@ -20,6 +20,7 @@ define(['core/js/adapt'], function(Adapt) {
         googleAnalytics.setupContents();
         googleAnalytics.setupSearch();
         googleAnalytics.setupGoTop();
+        googleAnalytics.setupSocial();
     });
 
     Adapt.on("pageView:ready menuView:ready", function() {
@@ -27,6 +28,7 @@ define(['core/js/adapt'], function(Adapt) {
             return;
         Adapt.log.debug('/' + location.hash);
         ga('set', 'page', '/' + location.hash);
+        googleAnalytics.setupQuickNav();
     });
 
     var googleAnalytics = {
@@ -56,10 +58,6 @@ define(['core/js/adapt'], function(Adapt) {
             });
         },
 
-        getBCIDfromComponentID(componentID) {
-            return Adapt.findById(componentID).get('_videoId');
-        },
-
         setupContents() {
             Adapt.on("contents:pageComplete", function() {
                 ga('send', 'event', 'Contents', 'page-complete', '/' + Adapt.contentObjects._byAdaptID[Adapt.location._currentId][0].get('title'));
@@ -86,6 +84,28 @@ define(['core/js/adapt'], function(Adapt) {
                 Adapt.log.debug('Searching');
                 ga('send', 'event', 'Search', 'icon-clicked', Adapt.course.get('title'));
             });
+        },
+
+        setupSocial() {
+            $('body').on('click', '.social-open-button', function() {
+                Adapt.log.debug('Social');
+                ga('send', 'event', 'Social', 'social-opened', Adapt.course.get('title'));
+            });
+        },
+
+        setupQuickNav() {
+            $( ".quicknav #previous" ).on( "click", function() {
+                Adapt.log.debug('Quicknav back');
+                ga('send', 'event', 'Quicknav', 'previous', Adapt.course.get('title'));
+            });
+            $( ".quicknav #next" ).on( "click", function() {
+                Adapt.log.debug('Quicknav next');
+                ga('send', 'event', 'Quicknav', 'next', Adapt.course.get('title'));
+            });
+        },
+
+        getBCIDfromComponentID(componentID) {
+            return Adapt.findById(componentID).get('_videoId');
         },
 
         getUrl() {
