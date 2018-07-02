@@ -15,8 +15,13 @@ define(['core/js/adapt'], function(Adapt) {
             return;
         ga('set', 'page', googleAnalytics.getUrl());
         ga('send', 'pageview');
+        if(googleAnalytics.findComponent("kaltura").length >= 1) {
+            googleAnalytics.setupKaltura();
+        }
+        if(googleAnalytics.findComponent("brightcove").length >= 1){
+            googleAnalytics.setupBrightcove();
+        }
         googleAnalytics.setupPrintPage();
-        googleAnalytics.setupBrightcove();
         googleAnalytics.setupContents();
         googleAnalytics.setupSearch();
         googleAnalytics.setupGoTop();
@@ -33,6 +38,13 @@ define(['core/js/adapt'], function(Adapt) {
     });
 
     var googleAnalytics = {
+        findComponent(componentName) {
+            var firstComponentModel = Adapt.components.models.filter(function(model) {
+                return model.get("_component") === componentName;
+            });
+            return firstComponentModel;
+        },
+
         setupPrintPage() {
             $('body').on('click', '.printPage-icon', function() {
                 event.preventDefault();
@@ -46,16 +58,31 @@ define(['core/js/adapt'], function(Adapt) {
             });
         },
 
-        setupBrightcove() {
+        setupKaltura() {
+            var context = this;
             $('body').on('click', '.media-inline-transcript-button', function() {
                 event.preventDefault();
                 var componentID = $(this).closest('.component').attr('data-adapt-id');
-                ga('send', 'event', 'Brightcove-transcript-opened', getBCIDfromComponentID(componentID), Adapt.course.get('title'));
+                ga('send', 'event', 'Kaltura-transcript-opened', context.getKalturaID(componentID), Adapt.course.get('title'));
             });
             $('body').on('click', '.media-external-transcript-button', function(componentId) {
                 event.preventDefault();
                 var componentID = $(this).closest('.component').attr('data-adapt-id');
-                ga('send', 'event', 'Brightcove-transcript-downloaded', getBCIDfromComponentID(componentID), Adapt.course.get('title'));
+                ga('send', 'event', 'Kaltura-transcript-downloaded', context.getKalturaID(componentID), Adapt.course.get('title'));
+            });
+        },
+
+        setupBrightcove() {
+            var context = this;
+            $('body').on('click', '.media-inline-transcript-button', function() {
+                event.preventDefault();
+                var componentID = $(this).closest('.component').attr('data-adapt-id');
+                ga('send', 'event', 'Brightcove-transcript-opened', context.getBrightcoveID(componentID), Adapt.course.get('title'));
+            });
+            $('body').on('click', '.media-external-transcript-button', function(componentId) {
+                event.preventDefault();
+                var componentID = $(this).closest('.component').attr('data-adapt-id');
+                ga('send', 'event', 'Brightcove-transcript-downloaded', context.getBrightcoveID(componentID), Adapt.course.get('title'));
             });
         },
 
@@ -120,7 +147,12 @@ define(['core/js/adapt'], function(Adapt) {
             });
         },
 
-        getBCIDfromComponentID(componentID) {
+        getKalturaID(componentID) {
+            console.log(Adapt.findById(componentID).get('_entryId'));
+            return Adapt.findById(componentID).get('_entryId');
+        },
+
+        getBrightcoveID(componentID) {
             return Adapt.findById(componentID).get('_videoId');
         },
 
