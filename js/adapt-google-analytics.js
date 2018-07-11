@@ -38,14 +38,14 @@ define(['core/js/adapt'], function(Adapt) {
     });
 
     var googleAnalytics = {
-        findComponent(componentName) {
+        findComponent: function(componentName) {
             var firstComponentModel = Adapt.components.models.filter(function(model) {
                 return model.get("_component") === componentName;
             });
             return firstComponentModel;
         },
 
-        setupPrintPage() {
+        setupPrintPage: function() {
             $('body').on('click', '.printPage-icon', function() {
                 event.preventDefault();
                 Adapt.log.debug('print page fired');
@@ -58,7 +58,7 @@ define(['core/js/adapt'], function(Adapt) {
             });
         },
 
-        setupKaltura() {
+        setupKaltura: function() {
             var context = this;
             $('body').on('click', '.media-inline-transcript-button', function() {
                 event.preventDefault();
@@ -72,7 +72,7 @@ define(['core/js/adapt'], function(Adapt) {
             });
         },
 
-        setupBrightcove() {
+        setupBrightcove: function() {
             var context = this;
             $('body').on('click', '.media-inline-transcript-button', function() {
                 event.preventDefault();
@@ -86,7 +86,7 @@ define(['core/js/adapt'], function(Adapt) {
             });
         },
 
-        setupClose() {
+        setupClose: function() {
             $('body').on('click', '.navigation-close-button', function(componentId) {
                 event.preventDefault();
                 Adapt.log.debug('Course closed');
@@ -94,7 +94,7 @@ define(['core/js/adapt'], function(Adapt) {
             });
         },
 
-        setupContents() {
+        setupContents: function() {
             Adapt.on("contents:pageComplete", function() {
                 ga('send', 'event', 'Contents', 'page-complete', '/' + Adapt.contentObjects._byAdaptID[Adapt.location._currentId][0].get('title'));
             });
@@ -110,7 +110,7 @@ define(['core/js/adapt'], function(Adapt) {
             });
         },
 
-        setupGoTop() {
+        setupGoTop: function() {
             $('body').on('click', '.goTop-button', function() {
                 event.preventDefault();
                 Adapt.log.debug('Go top');
@@ -118,7 +118,7 @@ define(['core/js/adapt'], function(Adapt) {
             });
         },
 
-        setupSearch(search) {
+        setupSearch: function(search) {
             $('body').on('click', '.icon-search', function() {
                 event.preventDefault();
                 Adapt.log.debug('Searching');
@@ -126,7 +126,7 @@ define(['core/js/adapt'], function(Adapt) {
             });
         },
 
-        setupSocial() {
+        setupSocial: function() {
             $('body').on('click', '.social-open-button', function() {
                 event.preventDefault();
                 Adapt.log.debug('Social');
@@ -134,7 +134,7 @@ define(['core/js/adapt'], function(Adapt) {
             });
         },
 
-        setupQuickNav() {
+        setupQuickNav: function() {
             $( ".quicknav #previous" ).on( "click", function() {
                 event.preventDefault();
                 Adapt.log.debug('Quicknav back');
@@ -147,16 +147,16 @@ define(['core/js/adapt'], function(Adapt) {
             });
         },
 
-        getKalturaID(componentID) {
+        getKalturaID: function(componentID) {
             console.log(Adapt.findById(componentID).get('_entryId'));
             return Adapt.findById(componentID).get('_entryId');
         },
 
-        getBrightcoveID(componentID) {
+        getBrightcoveID: function(componentID) {
             return Adapt.findById(componentID).get('_videoId');
         },
 
-        getUrl() {
+        getUrl: function() {
             return location.pathname + location.hash;
         }
     };
