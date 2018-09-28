@@ -95,19 +95,25 @@ define(['core/js/adapt'], function(Adapt) {
         },
 
         setupContents: function() {
-            Adapt.on("contents:pageComplete", function() {
-                ga('send', 'event', 'Contents', 'page-complete', '/' + Adapt.contentObjects._byAdaptID[Adapt.location._currentId][0].get('title'));
-            });
-            $('body').on('click', '.contents-article-title', function() {
-                event.preventDefault();
-                Adapt.log.debug('Article clicked');
-                ga('send', 'event', 'Contents', 'article-clicked', Adapt.course.get('title'));
-            });
-            $('body').on('click', '.contents-component-title', function() {
-                event.preventDefault();
-                Adapt.log.debug('component clicked');
-                ga('send', 'event', 'Contents', 'component-clicked', Adapt.course.get('title'));
-            });
+          Adapt.on("contents:pageComplete", function() {
+            ga('send', 'event', 'Contents', 'page-complete', '/' + Adapt.contentObjects._byAdaptID[Adapt.location._currentId][0].get('title'));
+          });
+          $('body').on('click', '.contents-article-title', function() {
+            Adapt.log.debug('Article clicked');
+            ga('send', 'event', 'Contents', 'article-clicked', Adapt.course.get('title'));
+          });
+          $('body').on('click', '.contents-landing-page-title', function() {
+            Adapt.log.debug('Landing page clicked');
+            ga('send', 'event', 'Contents', 'landing-page-navigation', Adapt.course.get('title'));
+          });
+          $('body').on('click', '.contents-page-title', function() {
+            Adapt.log.debug('Landing page clicked');
+            ga('send', 'event', 'Contents', 'page-navigation', Adapt.course.get('title'));
+          });
+          $('body').on('click', '.contents-component-title', function() {
+            Adapt.log.debug('component clicked');
+            ga('send', 'event', 'Contents', 'component-clicked', Adapt.course.get('title'));
+          });
         },
 
         setupGoTop: function() {
