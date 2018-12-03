@@ -46,20 +46,24 @@ define(['core/js/adapt'], function(Adapt) {
       ga('send', 'event', 'Kaltura-fullscreen', id, Adapt.course.get('title'));
     },
 
-    kaltura25: function(id) {
-      ga('send', 'event', 'Kaltura-25%', id, Adapt.course.get('title'));
+    kalturaLoaded: function(id) {
+      ga('send', 'event', 'Kaltura-loaded', id, Adapt.course.get('title'));
     },
 
-    kaltura50: function(id) {
-      ga('send', 'event', 'Kaltura-50%', id, Adapt.course.get('title'));
+    kalturaFirstPlay: function(id) {
+      ga('send', 'event', 'Kaltura-firstPlay', id, Adapt.course.get('title'));
     },
 
-    kaltura75: function(id) {
-      ga('send', 'event', 'Kaltura-75%', id, Adapt.course.get('title'));
+    kalturaComplete: function(percentage, id) {
+      ga('send', 'event', 'Kaltura-' + percentage + '%', id, Adapt.course.get('title'));
     },
 
-    kalturaComplete: function(id) {
-      ga('send', 'event', 'Kaltura-finished', id, Adapt.course.get('title'));
+    kalturaReplay: function(id) {
+      ga('send', 'event', 'Kaltura-replay', id, Adapt.course.get('title'));
+    },
+
+    kalturaChangePlaybackRate: function(rate, id) {
+      ga('send', 'event', 'Kaltura-rate-change-' + rate, id, Adapt.course.get('title'));
     },
 
     kalturaInlineTranscript: function(id) {
